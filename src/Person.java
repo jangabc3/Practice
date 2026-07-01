@@ -1,4 +1,5 @@
 public class Person {
+
     private String name;
     private int age;
     private int cashAmount;
@@ -42,5 +43,13 @@ public class Person {
 
     }
 
+    // 추가
 
+    public boolean transfer(Person to, int amount) {
+        return account.transfer(to, amount);
+    }
+
+    public boolean transfer(BankAccount to, int amount) {
+        return account.transfer(to, amount);
+    }
 }

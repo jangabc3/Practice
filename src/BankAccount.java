@@ -12,7 +12,7 @@ public class BankAccount {
 
     }
 
-    public void SetOwner(Person newOwner) {
+    public void setOwner(Person newOwner) {
         owner = newOwner;
     }
 
@@ -49,5 +49,35 @@ public class BankAccount {
 
         System.out.println(amount + "원 출금하였습니다. 잔고: " + balance + "원, 현금: " + owner.getCashAmount() + "원");
         return true;
+
     }
+
+    // 추가
+    public boolean transfer(Person to, int amount) {
+        return transfer(to.getAccount(), amount);
+    }
+
+    public boolean transfer(BankAccount to, int amount) {
+
+        if (amount < 0 || balance < amount) {
+            System.out.println("false - from: " + owner.getName()
+                    + ", to: " + to.getOwner().getName()
+                    + ", amount: " + amount
+                    + ", balance: " + balance);
+            return false;
+        }
+
+        balance -= amount;
+        to.balance += amount;
+
+        System.out.println("true - from: " + owner.getName()
+                + ", to: " + to.getOwner().getName()
+                + ", amount: " + amount
+                + ", balance: " + balance);
+
+        return true;
+    }
+
+
 }
+
